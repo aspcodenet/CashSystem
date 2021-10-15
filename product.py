@@ -10,3 +10,6 @@ class Product:
 
     def getNamn(self):
         return self._namn
+
+    def getProductId(self):
+        return self._productId        

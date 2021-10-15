@@ -1,3 +1,6 @@
+from ProductRegister import ProductRegister
+
+
 def getInputBetween(startval: int,endval: int)->int:
     while True:
         try:
@@ -7,8 +10,16 @@ def getInputBetween(startval: int,endval: int)->int:
             print(f"Ogiltigt val, mellan {startval} och {endval}, tack")
         except:
             print("Ange ett tal tack!")
- 
+
+
+
+
+
 def startNewReceipt():
+    # ProductRegister 
+    productReg = ProductRegister()
+    productReg.readFromFile("products.txt")
+
     print("KASSA")
     print("--- kvitto --- ")
     print("Kommandon:")
@@ -18,7 +29,18 @@ def startNewReceipt():
     if kommando == "PAY":
         #skriva till en fil
         return
-    
+    # 300 18
+    parts = kommando.split(" ")
+    productId = parts[0]
+
+    product = productReg.find(productId)
+    if product == None:
+        print("Finns ej")
+    else:
+        print(f"Bra - adding to receipt: {product.getNamn()}")        
+
+    # parts[0] "300"
+    # parts[1] "18"
 
 
 
